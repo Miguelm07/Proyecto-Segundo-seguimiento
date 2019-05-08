@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/diseño.css">
+</head>
+<body >
+
+	<div class="box">
+		<center><p>Ingresa a FACCIN</p></center>
+		<h1>Login</h1>
+		
+		<select id="rol">
+			<option value="">Selecciona Rol</option>
+			<option value="ventas">ventas</option>
+			<option value="contabilidad">contabilidad</option>
+			<option value="administracion">administracion</option>
+			<option value="auditoria">auditoria</option>
+		</select><br><br>
+			<p>Contraseña</p>
+			<input type="password" name="" id="pass" value="" placeholder="Ingresa la contraseña">
+			<center><button type="" onclick="login()">Ingresar</button></center><br>
+
+			
+	
+	</div>
+
+	<div class="ventas">
+		<center>
+			
+			<h3>VENTA DE PRODUCTO</h3>
+
+	<input type="text" id="IDPro" name="" class="inputTxt" value="" placeholder="ID" onkeyup="Busquedaid(this.value)">
+	<input type="text" name="" id="NomPro" class="inputTxt" value="" onkeyup="BusquedaPorNombre(this.value)" placeholder="Nombre del producto" size="20px">
+	<input type="text" name="" id="Cantidad" class="inputTxt" value="" placeholder="Cantidad" size="20px"><br>
+	<a class="modal-trigger waves-effect waves-light btn" onclick="Agregar_carrito()">AGREGAR AL CARRITO</a>  <a class="modal-trigger waves-effect waves-light btn" href="#modal6">ver tikect</a>
+	<h3>Carrito</h3>
+		</center>
+
+	<table class="tableScrol" class="responsive-table">
+        <thead>
+          <tr>
+              <th>ID</th>
+              <th>NOMBRE</th>
+              <th>PRECIO</th>
+              <th>CANTIDAD</th>
+              <th>TOTAL</th>
+          </tr>
+        </thead>
+
+        <tbody id="carrito">
+
+
+        </tbody>
+          <tfoot>
+    <tr>
+      <td colspan="2"> Totales</td>
+      <td>  </td>
+      <td> </td>
+      <td> </td>
+      <td id="PrecioTotal"> </td>
+    </tr>
+  </tfoot>
+      </table>
+      <br><br>
+     <center>  <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Generar venta</a><a class="modal-trigger waves-effect waves-light btn" href="#modal5" onclick="refrescarTablap()">PRODUCTOS</a></center>
+	</div>
+
+
+
+
+		
+	<div class="contabilidad">
+   <center> <h3>CONTABILIDAD</h3></center><br><br><br>
+
+    <center>  <a class="modal-trigger waves-effect waves-light btn" href="#modal7" onclick="refrescarTablaH()">HISTORIAL DE HOY</a>
+<p><strong>Fecha:</strong> <input type="text" name="" class="inputTxt" id="datepicker" value="" placeholder="dd/mm/yyyy" size="20px">
+  <a class="modal-trigger waves-effect waves-light btn" href="#modal7" onclick="refrescarTablaH()" >buscar</a></p>
+
+    </center>  
+
+
+
+
+
+
+
+		
+	</div>
+
+
+
+
+
+
+	<div class="administracion">
+		<center>
+			
+			<h3>ADMINISTRADOR</h3>
+
+	<h3>NUEVO PRODUCTO</h3>
+	<input type="text" name="" class="inputTxt" id="_id" value="" placeholder="id del producto" size="20px">
+	<input type="text" name="" class="inputTxt" id="nombreP" value="" placeholder="Nombre del producto" size="20px">
+	<input type="number" name="" class="inputTxt" id="valorP" value="" placeholder="Valor de producto" size="20px">
+	<input type="number" class="inputNum" id="cantidadP" name="" value="" placeholder="" size="1">
+  <br><br>
+    <input type="file" id="file-input"  class="inputNum" />
+
+		</center>
+ <br><br>
+     <center>  <a class="modal-trigger waves-effect waves-light btn" href="#modal3" onclick="refrescarTabla()">PRODUCTOS</a></center>	
+	</div>
+	
+	<div class="auditoria">
+		
+	</div>
+
+
+
+
+  <!-- Modal Structure -->
+<div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Completar venta</h4>
+      	<input type="text" name="" id="Cc" class="inputTxt" value="" placeholder="Cc" size="20px" onkeyup="BusquedaCLiente(this.value)">
+	
+	<input type="text" id="NomCli" name="" class="inputTxt" value="" placeholder="Nombre del Cliente" size="20px">	
+	<input type="email" id="email" value="" placeholder="correo" class="inputTxt">
+    </div>
+    <div class="modal-footer">
+      <button href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " onclick="GenerarID()">Completar venta</button><br><br>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal bottom-sheet">
+    <div class="modal-content">
+     <h3>Soporte tecnico</h3><br>
+	<input type="text" name="" class="inputTxt" id="nombre" value="" placeholder="Nombre del Cliente" size="20px"><br>
+	<input type="text" name="" class="inputTxt" id="cedula" value="" placeholder="Cc" size="20px"><br>
+	<input type="text" name="" class="inputTxt" id="telefono" value="" placeholder="Telefono" size="20px"><br>
+	
+	<textarea id="mensaje">
+		
+	</textarea><br>
+	<p>Contacta:<a href="https://api.whatsapp.com/send?phone=573216910799" class="icon-whatsapp" style="color:green;">WhatsApp</a></p>
+  <p>Wilmer rafael Hernandez</p>
+	<button  class="modal-action modal-close waves-effect waves-green btn-flat " onclick="enviarReporte()">Enviar</button>
+    </div>
+
+  </div>
+
+
+  <div id="modal3" class="modal bottom-sheet">
+    <div class="modal-content">
+    <table>
+	<caption>Productos</caption>
+  <thead>
+    <tr>
+      <th> ID </th>
+      <th>Nombre de Producto</th>
+      <th>Precio unitario</th>
+      <th>Cantidad</th>
+      <th>Total</th>
+      <th>Borrar</th>
+      <th>Modificar</th>
+    </tr>
+  </thead>
+  <tbody class="addProductoNew">
+
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2"> Totales</td>
+      <td class="PTotal" id="PTotal">  </td>
+      <td class="CantidadTotal" id="CantidadTotal"> </td>
+      <td class="PrecioTotal" id="PrecioTotal"> </td>
+    </tr>
+  </tfoot>
+</table>
+    </div>
+
+  </div>
+
+
+  <div id="modal4" class="modal bottom-sheet">
+    <div class="modal-content">
+    	<h3>Modificar</h3><br>
+	<input type="text" name="" id="idM" class="inputTxt" id="telefono" value="" placeholder="" size="20px" disabled><br>
+	<input type="text" name="" id="nombreM" class="inputTxt" id="nombre" value="" placeholder="Nombre del Producto" size="20px"><br>
+	<input type="text" name="" id="precioM" class="inputTxt" id="cedula" value="" placeholder="Precio" size="20px"><br>
+	<input type="text" name="" id="CantidadM" class="inputTxt" id="telefono" value="" placeholder="Cantidad" size="20px"><br>
+
+	<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " onclick="modificarProducto()">Modificar</a>
+    </div>
+
+  </div>
+
+  <div id="modal5" class="modal bottom-sheet">
+    <div class="modal-content">
+    	<table>
+	<caption>Productos</caption>
+  <thead>
+    <tr>
+      <th> # </th>
+      <th>Nombre de Producto</th>
+      <th>Precio unitario</th>
+      <th>Cantidad</th>
+      <th>Total</th>
+      <th>Añadir Producto</th>
+      <th>Generar codebar</th>
+    </tr>
+  </thead>
+  <tbody class="addProducto">
+
+
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2"> Totales</td>
+      <td class="PrecioTotal"></td>
+      <td class="CantidadTotal"></td>
+      <td class="PrecioTotal"></td>
+    </tr>
+  </tfoot>
+</table>
+    </div>
+
+  </div>
+
+
+
+  <div id="modal6" class="modal bottom-sheet">
+    <div class="modal-content">
+
+
+<div class="ticket">
+   <img width="50px" height="50px" src="https://image.flaticon.com/icons/png/512/33/33417.png" alt="Logotipo">FACCIN
+    <p class="centrado">TICKET DE VENTA<br><h3></h3><br><p id="fectik"></p></p>
+    <p id="DIAN"></p>
+    <table>
+      <thead>
+        <tr>
+          <th>CANT</th>
+          <th>PRODUCTO</th>
+          <th>$$</th>
+        </tr>
+      </thead>
+      <tbody id="btick">
+   
+
+  
+      </tbody>
+      <tr>
+              <td></td>
+          <td>TOTAL</td>
+          <td class="PrecioTotaCarrito"></td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+
+
+    </div>
+
+  </div>
+
+
+  <div id="modal7" class="modal bottom-sheet">
+    <div class="modal-content">
+      <center><h3>HISTORIAL</h3></center><br>
+
+    <table>
+    <center>
+  <caption>Historial</caption>
+  <thead>
+    <tr>
+      <th> # </th>
+      <th>Cliente</th>
+      <th>Nombre de Producto</th>
+      <th>Precio unitario</th>
+      <th>Cantidad</th>
+      <th>Fecha</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody id="Historial">
+   
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2"> Totales</td>
+      <td class="PrecioTotal"></td>
+      <td class="CantidadTotal"></td>
+      <td class=""></td>
+      <td class="Fecha"></td>    
+      <td ></td>  
+      <td class="PrecioTotaHistorial"></td>
+
+    </tr>
+  </tfoot>
+</table>
+</center>
+    </div>
+<button class="modal-trigger waves-effect waves-light btn" id="cmd">Generar PDF De las ventas del dia</button>
+  </div>
+
+
+
+<br><br>
+<center>  <a class="modal-trigger waves-effect waves-light btn" href="#modal2">Soporte</a></center>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</html>
